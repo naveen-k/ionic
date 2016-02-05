@@ -21,19 +21,18 @@
   <script src="js/app.js"></script>
   </head>
   <body ng-app="starter" ng-controller="DeviceController" class="platform-ios platform-cordova platform-webview">
-    <ion-pane>
+    <ion-pane class="bg" style="background: #e4e5e3; ">
       <ion-header-bar class="bar bar-header bar-dark">
       <button class="button button-clear icon ion-gear-a icon-left"></button>
        <h1 class="title">Dweet My Phone</h1>
         <button class="button button-clear icon ion-ios-upload-outline"></button>
       </ion-header-bar>
       <ion-content overflow-scroll="true" class="padding positive">
-        <h3 class="title"  align="center">{{test}}</h3>
-        <div>
-            <span style="color:#d3d3d3;font-weight: italic; font-size: 1.2em;">thingspace.io
+        <div style="margin-bottom:-11px;">
+               <div class="list-top">my thing</div>
+            <span class="list-caption-box">thingspace.io
             </span>
-                    <!-- <span class="button-">online</span> -->
-            <span class="button button-outline button-small button-balanced  col-offset-75" >online</span >
+            <span class="online  button-balanced  col-offset-75" ><a href="#"><img src="images/online.jpg"  /></a></span >
         </div>
         <div class="list card device-border">
            <div class="list-head">device </div>
@@ -50,6 +49,7 @@
                     <span class="item-right">{{isHeadphone}}</span>
                 </div>
         </div>
+        <span>debug : {{test}}</span>
         <div class="list card orientation-border">
           <div class="list-head">Orientation </div>
                 <div class="item">
@@ -70,24 +70,19 @@
                 </div>
         </div>
         <div class="list card gps-border">
-          <div class="item">
-            <h2 style="color:#CB081A;font-weight: bold; font-size: 1.4em;">GPS</h2>
-          </div>
-          <div class="item item-body">
-            <div>
-              <ul class="list">
-                <ion-item>Latitude 
-                        <span class="item-note">{{latitude}}</span>
-                </ion-item>   
-                <ion-item>Longitude
-                        <span class="item-note">{{longitude}}</span>
-                </ion-item>   
-                <ion-item>Altitude
-                        <span class="item-note">{{altitude}}</span>
-                </ion-item>   
-              </ul>              
-            </div>
-          </div>
+          <div class="list-head">GPS </div>
+                <div class="item">
+                    <span class="item-left">Latitude</span>
+                    <span class="item-right"> {{latitude}}</span>
+                </div>
+                <div class="item">
+                   <span class="item-left">Longitude</span>
+                    <span class="item-right">{{longitude}}</span>
+                </div>
+                   <div class="item">
+                    <span class="item-left"> Altitude</span>
+                    <span class="item-right">{{altitude}}</span>
+                </div>
         </div>     
         
     </div>

@@ -394,11 +394,12 @@ img{
     height: auto;
     margin-right: auto;
     margin-left: auto;
-    font-size: 19px;
-    font-family: "NHG-W01-75-DspBd";
+    font-size: 20px;
+    font-family: "NHG-W01-55-Dsp";
     color:#4b4b4b;
     margin-top: 8px;
     text-align: center;
+    font-weight: bolder;
 }
 .no-mar{
     margin: 0px !important;
@@ -409,9 +410,8 @@ img{
     color: #be0000;
     text-transform: uppercase;
     text-align: left;
-    font-family: "NHG-W01-55-Dsp";
+    font-family: "NHG-W01-75-TxtBd";
     padding-left: 17px;
-    font-weight: bold;
     font-size: 17px;
     padding-bottom: 25px;
     margin-top: 11px
@@ -440,4 +440,8 @@ a{border: none;}
 }
 .item:first{
     border-width:0px !important;
+}
+.online{
+    position: absolute;
+    right: 12px;
 }

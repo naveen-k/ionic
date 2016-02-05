@@ -1168,7 +1168,7 @@ angular.module('ngCordova.plugins.headsetDetection', [])
         if (!$window.cordova) {
           q.reject('Not supported without cordova.js');
         } else {
-          $window.cordova.plugins.headsetDetection.detect(function (result) {
+          $window.cordova.plugins.HeadSet.detect(function (result) {
             q.resolve(result);
           }, function (err) {
             q.reject(err);

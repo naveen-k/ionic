@@ -37,17 +37,19 @@ angular.module('starter', ['ionic','ngCordova'])
       }
       
       // get headphibe status
+      //$scope.test=$cordovaHeadsetDetection
       try {
          $cordovaHeadsetDetection.detect().then(function (result) {
           $scope.isHeadphone=result;
+          $scope.test='#'+result;
         }, function(err) {
           $scope.isHeadphone='na';
-          //$scope.test='*'+err;
+          $scope.test='*'+err;
         });
       }
       catch(err) {
           $scope.isHeadphone='na';
-          //$scope.test='**'+err;
+          $scope.test='**'+err;
       }
       
       
@@ -116,6 +118,7 @@ angular.module('starter', ['ionic','ngCordova'])
   
     });
     // Dweet  
+    var device_id=  'dweet_'+$cordovaDevice.getPlatform()+'_'+getUUID();
       var myVar = setInterval(dweetIt, 5000);
       function dweetIt() {
         //$scope.test='hiii'+dweetio;
@@ -134,6 +137,11 @@ angular.module('starter', ['ionic','ngCordova'])
           dweetio.dweet_for("dweet-my-ios-device-info", data, function(err, dweet){
             //$scope.test=dweet.content;
           });
+      };
+
+      function deltaRotationVector(xAxis,yAxis,zAxis) {
+        //$scope.test='hiii'+dweetio;
+         
       }
     
   });
