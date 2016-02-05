@@ -32,6 +32,41 @@ module.exports = [
         "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
         "id": "cordova-plugin-geolocation.PositionError",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-device-orientation/www/CompassError.js",
+        "id": "cordova-plugin-device-orientation.CompassError",
+        "clobbers": [
+            "CompassError"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
+        "id": "cordova-plugin-device-orientation.CompassHeading",
+        "clobbers": [
+            "CompassHeading"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device-orientation/www/compass.js",
+        "id": "cordova-plugin-device-orientation.compass",
+        "clobbers": [
+            "navigator.compass"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-headset-detection/www/HeadsetDetection.js",
+        "id": "cordova-plugin-headset-detection.HeadsetDetection",
+        "clobbers": [
+            "navigator.HeadsetDetection"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-brightness/www/brightness.js",
+        "id": "cordova-plugin-brightness.Brightness",
+        "clobbers": [
+            "cordova.plugins.brightness"
+        ]
     }
 ];
 module.exports.metadata = 

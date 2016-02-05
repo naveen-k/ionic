@@ -7,13 +7,22 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-brightness": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.starter"
         },
         "cordova-plugin-device-motion": {
             "PACKAGE_NAME": "com.ionicframework.starter"
         },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
         "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "cordova-plugin-headset-detection": {
             "PACKAGE_NAME": "com.ionicframework.starter"
         }
     },

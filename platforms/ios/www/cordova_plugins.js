@@ -1,6 +1,14 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "file": "plugins/cordova-plugin-brightness/www/brightness.js",
+        "id": "cordova-plugin-brightness.Brightness",
+        "pluginId": "cordova-plugin-brightness",
+        "clobbers": [
+            "cordova.plugins.brightness"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-device/www/device.js",
         "id": "cordova-plugin-device.device",
         "pluginId": "cordova-plugin-device",
@@ -22,6 +30,30 @@ module.exports = [
         "pluginId": "cordova-plugin-device-motion",
         "clobbers": [
             "navigator.accelerometer"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device-orientation/www/CompassError.js",
+        "id": "cordova-plugin-device-orientation.CompassError",
+        "pluginId": "cordova-plugin-device-orientation",
+        "clobbers": [
+            "CompassError"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
+        "id": "cordova-plugin-device-orientation.CompassHeading",
+        "pluginId": "cordova-plugin-device-orientation",
+        "clobbers": [
+            "CompassHeading"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device-orientation/www/compass.js",
+        "id": "cordova-plugin-device-orientation.compass",
+        "pluginId": "cordova-plugin-device-orientation",
+        "clobbers": [
+            "navigator.compass"
         ]
     },
     {
@@ -54,6 +86,14 @@ module.exports = [
         "pluginId": "cordova-plugin-geolocation",
         "clobbers": [
             "navigator.geolocation"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-headset-detection/www/HeadsetDetection.js",
+        "id": "cordova-plugin-headset-detection.HeadsetDetection",
+        "pluginId": "cordova-plugin-headset-detection",
+        "clobbers": [
+            "cordova.plugins.HeadSet"
         ]
     }
 ];

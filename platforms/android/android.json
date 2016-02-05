@@ -19,6 +19,18 @@
                         {
                             "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Compass\"><param name=\"android-package\" value=\"org.apache.cordova.deviceorientation.CompassListener\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"HeadsetDetection\"><param name=\"android-package\" value=\"org.apache.cordova.HeadSet.HeadsetDetection\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Brightness\"><param name=\"android-package\" value=\"org.apache.cordova.plugin.Brightness.BrightnessPlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -28,10 +40,18 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 2
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\" />",
                             "count": 1
                         }
                     ]
@@ -47,6 +67,15 @@
             "PACKAGE_NAME": "com.ionicframework.starter"
         },
         "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "cordova-plugin-headset-detection": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "cordova-plugin-brightness": {
             "PACKAGE_NAME": "com.ionicframework.starter"
         }
     },
@@ -84,6 +113,41 @@
             "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
             "id": "cordova-plugin-geolocation.PositionError",
             "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-device-orientation/www/CompassError.js",
+            "id": "cordova-plugin-device-orientation.CompassError",
+            "clobbers": [
+                "CompassError"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
+            "id": "cordova-plugin-device-orientation.CompassHeading",
+            "clobbers": [
+                "CompassHeading"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device-orientation/www/compass.js",
+            "id": "cordova-plugin-device-orientation.compass",
+            "clobbers": [
+                "navigator.compass"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-headset-detection/www/HeadsetDetection.js",
+            "id": "cordova-plugin-headset-detection.HeadsetDetection",
+            "clobbers": [
+                "navigator.HeadsetDetection"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-brightness/www/brightness.js",
+            "id": "cordova-plugin-brightness.Brightness",
+            "clobbers": [
+                "cordova.plugins.brightness"
+            ]
         }
     ]
 }

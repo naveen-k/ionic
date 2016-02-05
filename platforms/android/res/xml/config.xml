@@ -10,6 +10,15 @@
     <feature name="Geolocation">
         <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
     </feature>
+    <feature name="Compass">
+        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+    </feature>
+    <feature name="HeadsetDetection">
+        <param name="android-package" value="org.apache.cordova.HeadSet.HeadsetDetection" />
+    </feature>
+    <feature name="Brightness">
+        <param name="android-package" value="org.apache.cordova.plugin.Brightness.BrightnessPlugin" />
+    </feature>
     <name>HelloCordova</name>
     <description>
         An Ionic Framework and Cordova project.

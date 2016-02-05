@@ -22,5 +22,29 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-device-orientation": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-device-orientation@~1.0.2"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-headset-detection": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-headset-detection@~1.0.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-brightness": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-brightness"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

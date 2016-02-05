@@ -20,87 +20,88 @@
   </head>
   <body ng-app="starter" ng-controller="DeviceController" class="platform-android platform-cordova platform-webview">
     <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">
-          Hello Ionic
-        </h1>
+      <ion-header-bar class="bar bar-header bar-dark">
+      <button class="button button-clear icon ion-gear-a icon-left"></button>
+       <h1 class="title">Dweet My Phone</h1>
+        <button class="button button-clear icon ion-ios-upload-outline"></button>
       </ion-header-bar>
-      <ion-content>
-        
-        
+      <ion-content overflow-scroll="true" class="padding positive">
+        <h3 class="title"  align="center">my-thing</h3>
+        <div>
+            <span style="color:#d3d3d3;font-weight: italic; font-size: 1.2em;">thingspace.io
+            </span>
+                    <!-- <span class="button-">online</span> -->
+            <span class="button button-outline button-small button-balanced  col-offset-75" >online</span >
+        </div>
         <div class="list card">
-          <div class="item item-divider">
-            Device Info
+
+          <div class="item">
+            <h2 style="color:#CB081A;font-weight: bold; font-size: 1.4em;">DEVICE</h2>
           </div>
           <div class="item item-body">
             <div>
               <ul class="list">
-                <li class="item">
-                  Manufacturer : {{manufacturer}}
-                </li>
-                <li class="item">
-                  Model : {{model}}
-                </li>
-                <li class="item">
-                  Platform : {{platform}}
-                </li>
-                <li class="item">
-                  UUID : {{uuid}}
-                </li>
+                 <ion-item>iOS Version 
+                        <span class="item-note">{{osVersion}}</span>
+                </ion-item>   
+                <ion-item>Brightness
+                        <span class="item-note">{{brightness}}</span>
+                </ion-item>   
+                <ion-item>Headphones Attached
+                        <span class="item-note">{{isHeadphone}}</span>
+                </ion-item>   
               </ul>
               
             </div>
           </div>
         </div>
         <div class="list card">
-          <div class="item item-divider">
-            Location  Info
+          <div class="item">
+            <h2 style="color:#CB081A;font-weight: bold; font-size: 1.4em;">GPS</h2>
           </div>
           <div class="item item-body">
             <div>
               <ul class="list">
-                <li class="item">
-                  latitude : {{latitude}}
-                </li>
-                <li class="item">
-                  longitude : {{longitude}}
-                </li>
-              </ul>
-              
+                <ion-item>Latitude 
+                        <span class="item-note">{{latitude}}</span>
+                </ion-item>   
+                <ion-item>Longitude
+                        <span class="item-note">{{longitude}}</span>
+                </ion-item>   
+                <ion-item>Altitude
+                        <span class="item-note">{{altitude}}</span>
+                </ion-item>   
+              </ul>              
+            </div>
+          </div>
+        </div>     
+        <div class="list card">
+          <div class="item">
+            <h2 style="color:#CB081A;font-weight: bold; font-size: 1.4em;">ORIENTATION</h2>
+          </div>
+          <div class="item item-body">
+            <div>
+              <ul class="list">
+                <ion-item>Accelerometer : X
+                        <span class="item-note">{{xAxis}}</span>
+                </ion-item>   
+                <ion-item>Accelerometer : Y
+                        <span class="item-note">{{yAxis}}</span>
+                </ion-item>   
+                <ion-item>Accelerometer : Z
+                        <span class="item-note">{{zAxis}}</span>
+                </ion-item>   
+                <ion-item>Rotation Rate : X
+                        <span class="item-note">{{rotationRateX}}</span>
+                </ion-item>   
+              </ul>        
             </div>
           </div>
         </div>
-        
-        
-      </div>
     </div>
   </div>
-  <div class="list card">
-    <div class="item item-divider">
-      Motion  Info
-    </div>
-    <div class="item item-body">
-      <div>
-        <ul class="list">
-          <li class="item">
-            TimeStamp : {{timeStamp}}
-          </li>
-          
-          <li class="item">
-            X : {{xAxis}}
-          </li>
-          <li class="item">
-            Y : {{yAxis}}
-          </li>
-          <li class="item">
-            Z : {{zAxis}}
-          </li>
-          
-        </ul>
-        
-      </div>
-    </div>
-  </div>
+  
+</div>
   
   
 </ion-content>

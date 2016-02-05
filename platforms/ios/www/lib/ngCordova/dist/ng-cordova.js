@@ -1156,6 +1156,32 @@ angular.module('ngCordova.plugins.brightness', [])
     };
   }]);
 
+// naveen start here
+angular.module('ngCordova.plugins.headsetDetection', [])
+
+  .factory('$cordovaHeadsetDetection', ['$q', '$window', function ($q, $window) {
+
+    return {
+      detect: function () {
+        var q = $q.defer();
+
+        if (!$window.cordova) {
+          q.reject('Not supported without cordova.js');
+        } else {
+          $window.cordova.plugins.headsetDetection.detect(function (result) {
+            q.resolve(result);
+          }, function (err) {
+            q.reject(err);
+          });
+        }
+
+        return q.promise;
+      }
+    };
+  }]);
+
+// naveen end here
+
 
 // install  :     cordova plugin add https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin.git
 // link     :     https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin
@@ -5439,6 +5465,7 @@ angular.module('ngCordova.plugins', [
   'ngCordova.plugins.ble',
   'ngCordova.plugins.bluetoothSerial',
   'ngCordova.plugins.brightness',
+  'ngCordova.plugins.headsetDetection',
   'ngCordova.plugins.calendar',
   'ngCordova.plugins.camera',
   'ngCordova.plugins.capture',

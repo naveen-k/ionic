@@ -9,6 +9,10 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"Brightness\"><param name=\"ios-package\" value=\"Brightness\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
                         },
@@ -17,7 +21,15 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"Compass\"><param name=\"ios-package\" value=\"CDVCompass\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"HeadsetDetection\"><param name=\"ios-package\" value=\"HeadsetDetection\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -36,18 +48,35 @@
         }
     },
     "installed_plugins": {
+        "cordova-plugin-brightness": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.starter"
         },
         "cordova-plugin-device-motion": {
             "PACKAGE_NAME": "com.ionicframework.starter"
         },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
         "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "cordova-plugin-headset-detection": {
             "PACKAGE_NAME": "com.ionicframework.starter"
         }
     },
     "dependent_plugins": {},
     "modules": [
+        {
+            "file": "plugins/cordova-plugin-brightness/www/brightness.js",
+            "id": "cordova-plugin-brightness.Brightness",
+            "pluginId": "cordova-plugin-brightness",
+            "clobbers": [
+                "cordova.plugins.brightness"
+            ]
+        },
         {
             "file": "plugins/cordova-plugin-device/www/device.js",
             "id": "cordova-plugin-device.device",
@@ -70,6 +99,30 @@
             "pluginId": "cordova-plugin-device-motion",
             "clobbers": [
                 "navigator.accelerometer"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device-orientation/www/CompassError.js",
+            "id": "cordova-plugin-device-orientation.CompassError",
+            "pluginId": "cordova-plugin-device-orientation",
+            "clobbers": [
+                "CompassError"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device-orientation/www/CompassHeading.js",
+            "id": "cordova-plugin-device-orientation.CompassHeading",
+            "pluginId": "cordova-plugin-device-orientation",
+            "clobbers": [
+                "CompassHeading"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device-orientation/www/compass.js",
+            "id": "cordova-plugin-device-orientation.compass",
+            "pluginId": "cordova-plugin-device-orientation",
+            "clobbers": [
+                "navigator.compass"
             ]
         },
         {
@@ -102,6 +155,14 @@
             "pluginId": "cordova-plugin-geolocation",
             "clobbers": [
                 "navigator.geolocation"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-headset-detection/www/HeadsetDetection.js",
+            "id": "cordova-plugin-headset-detection.HeadsetDetection",
+            "pluginId": "cordova-plugin-headset-detection",
+            "clobbers": [
+                "cordova.plugins.HeadSet"
             ]
         }
     ]

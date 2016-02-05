@@ -3,106 +3,47 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>
-    </title>
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/buglabs.scss" rel="stylesheet">
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-<link href="css/ionic.app.css" rel="stylesheet">
--->
-  <!-- ionic/angularjs js -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+<!-- ionic/angularjs js -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>
   <script src="lib/ngCordova/dist/ng-cordova.js"></script>
   <script src="cordova.js"></script>
   <!-- cordova script (this will be a 404 during development) -->
   <!-- your app's js -->
-  <script src="js/app.js"></script>
+  
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/loading-dots.js"></script>
+    <script src="js/loading.controller.js"></script>
   </head>
-  <body ng-app="starter" ng-controller="DeviceController" class="platform-ios platform-cordova platform-webview">
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">
-          Hello Ionic
-        </h1>
-      </ion-header-bar>
-      <ion-content>
-        
-        
-        <div class="list card">
-          <div class="item item-divider">
-            Device Info
-          </div>
-          <div class="item item-body">
-            <div>
-              <ul class="list">
-                <li class="item">
-                  Manufacturer : {{manufacturer}}
-                </li>
-                <li class="item">
-                  Model : {{model}}
-                </li>
-                <li class="item">
-                  Platform : {{platform}}
-                </li>
-                <li class="item">
-                  UUID : {{uuid}}
-                </li>
-              </ul>
-              
-            </div>
-          </div>
+<body ng-app="starter" ng-controller="DeviceController" class="platform-ios platform-cordova platform-webview">
+    <div class="main-wrapper">
+    <div class="col-xs-12">
+        <div class="header-box top-lg-space">
+            <img src="images/v-logo.jpg" />
         </div>
-        <div class="list card">
-          <div class="item item-divider">
-            Location  Info
-          </div>
-          <div class="item item-body">
-            <div>
-              <ul class="list">
-                <li class="item">
-                  latitude : {{latitude}}
-                </li>
-                <li class="item">
-                  longitude : {{longitude}}
-                </li>
-              </ul>
-              
-            </div>
-          </div>
+         <div class="thing-space top-md-space">
+            <h1>ThingSpace</h1>
+            <h2>Dweet my Phone</h2>
         </div>
-        
-        
-      </div>
+        <div class="logo-box top-md-space">
+           <img src="images/logo.jpg" />
+        </div>
+        <div class="caption-box top-sm-space">
+            Powered by Buglabs
+        </div>
+        <div class="enter-button top-sm-space"><a  href="list.html">Enter</a></div>
     </div>
-  </div>
-  <div class="list card">
-    <div class="item item-divider">
-      Motion  Info
+ 
     </div>
-    <div class="item item-body">
-      <div>
-        <ul class="list">
-          <li class="item">
-            TimeStamp : {{timeStamp}}
-          </li>
-          
-          <li class="item">
-            X : {{xAxis}}
-          </li>
-          <li class="item">
-            Y : {{yAxis}}
-          </li>
-          <li class="item">
-            Z : {{zAxis}}
-          </li>
-          
-        </ul>
-        
-      </div>
-    </div>
-  </div>
-  
-  
-</ion-content>
-</ion-pane>
 </body>
+</html>
