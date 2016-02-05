@@ -17,6 +17,7 @@ angular.module('starter', ['ionic','ngCordova'])
 
 .controller('DeviceController', function($ionicPlatform, $scope, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
   $ionicPlatform.ready(function() {
+    
     $scope.$apply(function() {
       console.log('DeviceController','ionicPlatform ready');
       // sometimes binding does not work! :/
@@ -40,13 +41,13 @@ angular.module('starter', ['ionic','ngCordova'])
          $cordovaHeadsetDetection.detect().then(function (result) {
           $scope.isHeadphone=result;
         }, function(err) {
-          $scope.isHeadphone=err;
-          $scope.test='*'+err;
+          $scope.isHeadphone='na';
+          //$scope.test='*'+err;
         });
       }
       catch(err) {
-          $scope.isHeadphone=err;
-          $scope.test='**'+err;
+          $scope.isHeadphone='na';
+          //$scope.test='**'+err;
       }
       
       
@@ -112,7 +113,29 @@ angular.module('starter', ['ionic','ngCordova'])
         $scope.zAxis = result.z.toFixed(4)+'G';
         $scope.rotationRateX = 0 +' rad/s';
       });  
-
+  
     });
+    // Dweet  
+      var myVar = setInterval(dweetIt, 5000);
+      function dweetIt() {
+        //$scope.test='hiii'+dweetio;
+          var data={
+            osVersion:$scope.osVersion,
+            latitude:$scope.latitude,
+            longitude:$scope.longitude,
+            altitude:$scope.altitude,
+            xAxis:$scope.xAxis,
+            yAxis:$scope.yAxis,
+            zAxis:$scope.zAxis,
+            rotationRateX:$scope.rotationRateX,
+            brightness:$scope.brightness,
+            isHeadphone:$scope.isHeadphone
+          };
+          dweetio.dweet_for("dweet-my-ios-device-info", data, function(err, dweet){
+            //$scope.test=dweet.content;
+          });
+      }
+    
   });
+
 })

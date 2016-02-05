@@ -19,6 +19,8 @@
   
 </head>
 <body ng-app="starter" ng-controller="DeviceController">
+  <ion-pane>
+      <ion-header-bar calss='no-mar'>
         <div class="col-xs-12 no-mar top-header-holder">
             <div class="text-top">Dweet my Phone</div>
             <div class="col-xs-6 no-mar">
@@ -32,6 +34,8 @@
                </div>
             </div>
         </div>
+      </ion-header-bar>
+    <ion-content overflow-scroll="true" class="positive">
     <div class="main-wrapper">
     
                <div class="col-xs-12 no-mar">
@@ -94,5 +98,7 @@
             </div>
         </div>
     </div>
+    </ion-content>
+    </ion-pane>
 </body>
 </html>
