@@ -38,18 +38,26 @@ angular.module('starter', ['ionic','ngCordova'])
       
       // get headphibe status
       //$scope.test=$cordovaHeadsetDetection
-      try {
-         $cordovaHeadsetDetection.detect().then(function (result) {
-          $scope.isHeadphone=result;
-          $scope.test='#'+result;
-        }, function(err) {
-          $scope.isHeadphone='na';
-          $scope.test='*'+err;
-        });
-      }
-      catch(err) {
-          $scope.isHeadphone='na';
-          $scope.test='**'+err;
+    // Read   Brightness  
+      var myVarhead = setInterval(myHPTimer, 1000);
+        function myHPTimer() {
+          try {
+           $cordovaHeadsetDetection.detect().then(function (result) {
+            if(result){
+              $scope.isHeadphone='Yes';
+            }else{
+              $scope.isHeadphone='No';
+            }
+            $scope.test='#'+result;
+          }, function(err) {
+            $scope.isHeadphone='na';
+            //$scope.test='*'+err;
+          });
+        }
+        catch(err) {
+            $scope.isHeadphone='na';
+            //$scope.test='**'+err;
+        }
       }
       
       
