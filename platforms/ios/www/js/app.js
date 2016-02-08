@@ -22,6 +22,8 @@ angular.module('starter', ['ionic','ngCordova'])
       console.log('DeviceController','ionicPlatform ready');
       // sometimes binding does not work! :/
       // getting device infor from $cordovaDevice
+      $scope.device_id=  'dweet_'+$cordovaDevice.getPlatform()+'_'+$cordovaDevice.getVersion();
+     
       var osVersion = $cordovaDevice.getVersion();
       $scope.osVersion= osVersion;
       console.log('DeviceController','osVersion',osVersion);
@@ -142,7 +144,7 @@ angular.module('starter', ['ionic','ngCordova'])
             brightness:$scope.brightness,
             isHeadphone:$scope.isHeadphone
           };
-          dweetio.dweet_for("dweet-my-ios-device-info", data, function(err, dweet){
+          dweetio.dweet_for($scope.device_id, data, function(err, dweet){
             //$scope.test=dweet.content;
           });
       };
