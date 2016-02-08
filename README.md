@@ -13,15 +13,18 @@ For example, to start a new Ionic project with the default tabs interface, make 
 $ npm install -g ionic
 ```
 
-Then run:
+Then add iOS platform:
 
 ```bash
-$ ionic start myProject tabs
+$ ionic platform add ios
 ```
 
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
+Then build and run:
 
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
-# ionic
-# ionic
+```bash
+$ ionic run ios
+```
+
+
+Verifiy device info in thingspace 
+https://thingspace.io/follow/dweet_<os-platform>_<os-version> for example (https://thingspace.io/follow/dweet_iOS_9.2.1)
