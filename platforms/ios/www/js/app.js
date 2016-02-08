@@ -126,7 +126,7 @@ angular.module('starter', ['ionic','ngCordova'])
   
     });
     // Dweet  
-    var device_id=  'dweet_'+$cordovaDevice.getPlatform()+'_'+getUUID();
+    //var device_id=  'dweet_'+$cordovaDevice.getPlatform()+'_'+getUUID();
       var myVar = setInterval(dweetIt, 5000);
       function dweetIt() {
         //$scope.test='hiii'+dweetio;
