@@ -295,6 +295,9 @@ html,body{
 .top-lg-space{
         margin-top: 55px;
 }
+top-lg-pad{
+    padding-top: 55px;
+}
 img{
     margin-left: auto;
     margin-right: auto;
@@ -389,6 +392,7 @@ img{
     top: 15px;
     text-align: center;
 }
+
 .list-top{
     width: 100%;
     height: auto;
@@ -401,11 +405,34 @@ img{
     text-align: center;
     font-weight: bolder;
 }
+.settings-name{
+     width: 100%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
+    font-family: "NHG-W01-56-DspI";
+    color:#be0000;
+    margin-top: 8px;
+    text-align: center;
+    font-weight: bolder;
+}
 .no-mar{
     margin: 0px !important;
     padding: 0px !important;
 }
-
+.center{
+    text-align: center;
+}
+.settings-input{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+    width: 264px;
+    font-size: 20px;
+    color: #000 !important; 
+    
+}
 .list-head{
     color: #be0000;
     text-transform: uppercase;
@@ -444,4 +471,45 @@ a{border: none;}
 .online{
     position: absolute;
     right: 12px;
+}
+.item-radio{
+    width: 66px;
+    float: left;
+    text-align: center;
+    font-size:14px;
+}
+ .first-child{
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+}
+ .last-child{
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+    box-shadow: 0 0 0 1px white inset;
+    
+}
+.dweet-frequency{
+    margin-right: auto;
+    margin-left: auto;
+    width: 264px;
+}
+.item-radio input:checked + .radio-content .item-content{
+    background: #fff !important;
+    color: #959595;
+    
+}
+.item-complex .item-content, .item-radio .item-content{
+    background: #959595;
+    text-align: center;
+    color: #fff;
+     border: 1px solid #959595;
+   box-shadow: 0 0 0 1px white inset;
+   padding-right: 12px !important;
+   
+}
+.radio-content i{
+    display: none
+}
+.radio-content span{
+    width: 100px
 }

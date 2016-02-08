@@ -13,12 +13,20 @@
   <!-- ionic/angularjs js -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>
   <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+<script src="lib/ngCordova/dist/ng-cordova.js"></script>
+<script src="cordova.js"></script>
   <script src="cordova.js"></script>
   <script src="cordova.js"></script>
   <script src="lib/dweet/dweet.io.js"></script>
   <!-- cordova script (this will be a 404 during development) -->
   <!-- your app's js -->
   <script src="js/app.js"></script>
+  <script type="text/javascript" charset="utf-8">
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+  navigator.splashscreen.show();
+}
+</script>
   </head>
   <body ng-app="starter" ng-controller="DeviceController">
     <ion-pane class="bg" style="background: #e4e5e3; ">

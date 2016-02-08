@@ -15,8 +15,9 @@ angular.module('starter', ['ionic','ngCordova'])
   });
 })
 
-.controller('DeviceController', function($ionicPlatform, $scope, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness) {
+.controller('DeviceController', function($ionicPlatform, $scope, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
   $ionicPlatform.ready(function() {
+    
     $scope.$apply(function() {
       console.log('DeviceController','ionicPlatform ready');
       // sometimes binding does not work! :/
@@ -35,7 +36,31 @@ angular.module('starter', ['ionic','ngCordova'])
         });
       }
       
-      $scope.isHeadphone='n/a';
+      // get headphibe status
+      //$scope.test=$cordovaHeadsetDetection
+    // Read   Brightness  
+      var myVarhead = setInterval(myHPTimer, 1000);
+        function myHPTimer() {
+          try {
+           $cordovaHeadsetDetection.detect().then(function (result) {
+            if(result){
+              $scope.isHeadphone='Yes';
+            }else{
+              $scope.isHeadphone='No';
+            }
+            $scope.test='#'+result;
+          }, function(err) {
+            $scope.isHeadphone='na';
+            //$scope.test='*'+err;
+          });
+        }
+        catch(err) {
+            $scope.isHeadphone='na';
+            //$scope.test='**'+err;
+        }
+      }
+      
+      
 
       // Get GEO info
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
@@ -98,7 +123,35 @@ angular.module('starter', ['ionic','ngCordova'])
         $scope.zAxis = result.z.toFixed(4)+'G';
         $scope.rotationRateX = 0 +' rad/s';
       });  
-
+  
     });
+    // Dweet  
+    var device_id=  'dweet_'+$cordovaDevice.getPlatform()+'_'+getUUID();
+      var myVar = setInterval(dweetIt, 5000);
+      function dweetIt() {
+        //$scope.test='hiii'+dweetio;
+          var data={
+            osVersion:$scope.osVersion,
+            latitude:$scope.latitude,
+            longitude:$scope.longitude,
+            altitude:$scope.altitude,
+            xAxis:$scope.xAxis,
+            yAxis:$scope.yAxis,
+            zAxis:$scope.zAxis,
+            rotationRateX:$scope.rotationRateX,
+            brightness:$scope.brightness,
+            isHeadphone:$scope.isHeadphone
+          };
+          dweetio.dweet_for("dweet-my-ios-device-info", data, function(err, dweet){
+            //$scope.test=dweet.content;
+          });
+      };
+
+      function deltaRotationVector(xAxis,yAxis,zAxis) {
+        //$scope.test='hiii'+dweetio;
+         
+      }
+    
   });
+
 })

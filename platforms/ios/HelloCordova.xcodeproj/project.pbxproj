@@ -24,6 +24,8 @@
 		824416F74ED54250AB247558 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 423062C43F1440ABBF599543 /* CoreLocation.framework */; };
 		ABF2A80504FF4A358E8DF0BB /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFDF7F8E0541D8B36F5B74 /* CDVLocation.m */; };
 		F655052EBFB14A74BE5445D3 /* HeadsetDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9BD551F8034BFB954FCFC1 /* HeadsetDetection.m */; };
+		116882AB1DAC492B860A9BFC /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 64253B98E3BB4AC98678CC61 /* CDVSplashScreen.m */; };
+		9816568EE1A7472AB69E69F4 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 090070CBA9114384BEBDEB38 /* CDVViewController+SplashScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,10 @@
 		E86CECA375674CDDA5DC9E29 /* CDVLocation.h */ = {isa = PBXFileReference; name = "CDVLocation.h"; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		9E9BD551F8034BFB954FCFC1 /* HeadsetDetection.m */ = {isa = PBXFileReference; name = "HeadsetDetection.m"; path = "cordova-plugin-headset-detection/HeadsetDetection.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		8B3BEE30FE9040879DF952D3 /* HeadsetDetection.h */ = {isa = PBXFileReference; name = "HeadsetDetection.h"; path = "cordova-plugin-headset-detection/HeadsetDetection.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		64253B98E3BB4AC98678CC61 /* CDVSplashScreen.m */ = {isa = PBXFileReference; name = "CDVSplashScreen.m"; path = "cordova-plugin-splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		090070CBA9114384BEBDEB38 /* CDVViewController+SplashScreen.m */ = {isa = PBXFileReference; name = "CDVViewController+SplashScreen.m"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		2A8AD663D6954CFCB9835297 /* CDVSplashScreen.h */ = {isa = PBXFileReference; name = "CDVSplashScreen.h"; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		BF5E9823A2A74DD19AB74768 /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,10 @@
 				E86CECA375674CDDA5DC9E29 /* CDVLocation.h */,
 				9E9BD551F8034BFB954FCFC1 /* HeadsetDetection.m */,
 				8B3BEE30FE9040879DF952D3 /* HeadsetDetection.h */,
+				64253B98E3BB4AC98678CC61 /* CDVSplashScreen.m */,
+				090070CBA9114384BEBDEB38 /* CDVViewController+SplashScreen.m */,
+				2A8AD663D6954CFCB9835297 /* CDVSplashScreen.h */,
+				BF5E9823A2A74DD19AB74768 /* CDVViewController+SplashScreen.h */,
 			);
 			name = Plugins;
 			path = "HelloCordova/Plugins";
@@ -318,6 +328,8 @@
 				7FBB9B2F1FAE4795BDC30B87 /* CDVCompass.m in Sources */,
 				ABF2A80504FF4A358E8DF0BB /* CDVLocation.m in Sources */,
 				F655052EBFB14A74BE5445D3 /* HeadsetDetection.m in Sources */,
+				116882AB1DAC492B860A9BFC /* CDVSplashScreen.m in Sources */,
+				9816568EE1A7472AB69E69F4 /* CDVViewController+SplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
