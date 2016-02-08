@@ -27,4 +27,4 @@ $ ionic run ios
 
 
 Verifiy device info in thingspace 
-(thingspace.io/follow/dweet_<os-platform>_<os-version>) for example (https://thingspace.io/follow/dweet_iOS_9.2.1)
+(https://thingspace.io/follow/dweet_os-platform_os-version>) for example (https://thingspace.io/follow/dweet_iOS_9.2.1)
