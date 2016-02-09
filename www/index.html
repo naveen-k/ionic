@@ -23,9 +23,9 @@
   <body ng-app="starter" ng-controller="DeviceController">
     <ion-pane class="bg" style="background: #e4e5e3; ">
       <ion-header-bar class="bar bar-header bar-dark">
-      <button class="button button-clear icon ion-gear-a icon-left"></button>
+      <button class="button button-clear icon ion-gear-a icon-left" ng-click="gotoSetting()"></button>
        <h1 class="title">Dweet My Phone</h1>
-        <button class="button button-clear icon ion-ios-upload-outline"></button>
+        <button class="button button-clear icon ion-ios-upload-outline" ng-click="share()"></button>
       </ion-header-bar>
       <ion-content overflow-scroll="true" class="padding positive">
         <div style="margin-bottom:-11px;">
