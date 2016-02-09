@@ -14,14 +14,15 @@ angular.module('starter', ['ionic','ngCordova'])
     }
   });
 })
-
-.controller('DeviceController', function($ionicPlatform, $scope, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
+.controller('DeviceController', function($ionicPlatform, $scope, $state,$cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
   $ionicPlatform.ready(function() {
     
     $scope.$apply(function() {
       console.log('DeviceController','ionicPlatform ready');
       // sometimes binding does not work! :/
       // getting device infor from $cordovaDevice
+      $scope.device_id=  'dweet_'+$cordovaDevice.getPlatform()+'_'+$cordovaDevice.getVersion();
+     
       var osVersion = $cordovaDevice.getVersion();
       $scope.osVersion= osVersion;
       console.log('DeviceController','osVersion',osVersion);
@@ -126,7 +127,7 @@ angular.module('starter', ['ionic','ngCordova'])
   
     });
     // Dweet  
-    var device_id=  'dweet_'+$cordovaDevice.getPlatform()+'_'+getUUID();
+    //var device_id=  'dweet_'+$cordovaDevice.getPlatform()+'_'+getUUID();
       var myVar = setInterval(dweetIt, 5000);
       function dweetIt() {
         //$scope.test='hiii'+dweetio;
@@ -142,7 +143,7 @@ angular.module('starter', ['ionic','ngCordova'])
             brightness:$scope.brightness,
             isHeadphone:$scope.isHeadphone
           };
-          dweetio.dweet_for("dweet-my-ios-device-info", data, function(err, dweet){
+          dweetio.dweet_for($scope.device_id, data, function(err, dweet){
             //$scope.test=dweet.content;
           });
       };
@@ -153,5 +154,18 @@ angular.module('starter', ['ionic','ngCordova'])
       }
     
   });
+  
+  $scope.gotoSetting = function() {
+      /* $location.path('/tab/newpost'); */   /* this variant doesnt work */
+      
+    alert("Link Setting Page Here!");
+     //$state.go("settings");
+  };
+  $scope.share = function() {
+      /* $location.path('/tab/newpost'); */   /* this variant doesnt work */
+      
+    alert("Commng soon!");
+     //$state.go("settings");
+  };
 
 })

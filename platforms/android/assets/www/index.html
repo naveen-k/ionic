@@ -13,23 +13,24 @@
   <!-- ionic/angularjs js -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>
   <script src="lib/ngCordova/dist/ng-cordova.js"></script>
-  <script src="cordova.js"></script>
-  <script src="cordova.js"></script>
+<script src="lib/ngCordova/dist/ng-cordova.js"></script>
+<script src="cordova.js"></script>
   <script src="lib/dweet/dweet.io.js"></script>
   <!-- cordova script (this will be a 404 during development) -->
   <!-- your app's js -->
   <script src="js/app.js"></script>
+ 
   </head>
-  <body ng-app="starter" ng-controller="DeviceController" class="platform-android platform-cordova platform-webview">
+  <body ng-app="starter" ng-controller="DeviceController">
     <ion-pane class="bg" style="background: #e4e5e3; ">
       <ion-header-bar class="bar bar-header bar-dark">
-      <button class="button button-clear icon ion-gear-a icon-left"></button>
+      <button class="button button-clear icon ion-gear-a icon-left" ng-click="gotoSetting()"></button>
        <h1 class="title">Dweet My Phone</h1>
-        <button class="button button-clear icon ion-ios-upload-outline"></button>
+        <button class="button button-clear icon ion-ios-upload-outline" ng-click="share()"></button>
       </ion-header-bar>
       <ion-content overflow-scroll="true" class="padding positive">
         <div style="margin-bottom:-11px;">
-               <div class="list-top">my thing</div>
+               <div class="list-top">{{device_id}}</div>
             <span class="list-caption-box">thingspace.io
             </span>
             <span class="online  button-balanced  col-offset-75" ><a href="#"><img src="images/online.jpg"  /></a></span >

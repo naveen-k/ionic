@@ -14,8 +14,7 @@ angular.module('starter', ['ionic','ngCordova'])
     }
   });
 })
-
-.controller('DeviceController', function($ionicPlatform, $scope, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
+.controller('DeviceController', function($ionicPlatform, $scope, $state,$cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
   $ionicPlatform.ready(function() {
     
     $scope.$apply(function() {
@@ -155,5 +154,18 @@ angular.module('starter', ['ionic','ngCordova'])
       }
     
   });
+  
+  $scope.gotoSetting = function() {
+      /* $location.path('/tab/newpost'); */   /* this variant doesnt work */
+      
+    alert("Link Setting Page Here!");
+     //$state.go("settings");
+  };
+  $scope.share = function() {
+      /* $location.path('/tab/newpost'); */   /* this variant doesnt work */
+      
+    alert("Commng soon!");
+     //$state.go("settings");
+  };
 
 })
