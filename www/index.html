@@ -24,14 +24,7 @@
   <body ng-app="starter" ng-controller="DeviceController">
     <!-- The nav bar that will be updated as we navigate -->
   <ion-nav-bar class="bar bar-dark">
-      <ion-nav-buttons side="right">
-        <button class="button button-clear icon ion-ios-upload-outline" ng-click="share()"></button>
-        </button>
-    </ion-nav-buttons>
-    <ion-nav-buttons side="left">
-      <button class="button button-clear icon ion-gear-a icon-left" ng-click="changePage()"></button>
-    </ion-nav-buttons>
-    <ion-nav-back-button class="button-clear">
+   <ion-nav-back-button class="button-clear">
       <i class="ion-arrow-left-c"></i> Back
     </ion-nav-back-button>
   </ion-nav-bar>
@@ -39,6 +32,14 @@
 
    <script id="main.html" type="text/ng-template">  
    <ion-view class="title" view-title="Dweet My Phone">
+         <ion-nav-buttons side="right">
+        <button class="button button-clear icon ion-ios-upload-outline" ng-click="share()"></button>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="left">
+      <button class="button button-clear icon ion-gear-a icon-left" ng-click="changePage()"></button>
+    </ion-nav-buttons>
+    
       <ion-content overflow-scroll="true" class="padding positive">
         <div>
                <div class="list-top">{{device_id}}</div>
@@ -99,16 +100,13 @@
         
     </div>
   </div>
-  
 </div>
-  
   
 </ion-content>
    </ion-view>
    </script>
    <script id="setting.html" type="text/ng-template">
-   
-    <ion-view view-title="Setting">
+    <ion-view view-title="Setting"  hide-left-button="true">
       <ion-content overflow-scroll="true" class="padding positive">
         <div style="">
                <div class="list-top">{{device_id}}</div>
