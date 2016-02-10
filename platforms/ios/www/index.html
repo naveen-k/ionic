@@ -22,14 +22,25 @@
  
   </head>
   <body ng-app="starter" ng-controller="DeviceController" class="platform-ios platform-cordova platform-webview">
-    <ion-pane class="bg" style="background: #e4e5e3; ">
-      <ion-header-bar class="bar bar-header bar-dark">
-      <button class="button button-clear icon ion-gear-a icon-left" ng-click="gotoSetting()"></button>
-       <h1 class="title">Dweet My Phone</h1>
+    <!-- The nav bar that will be updated as we navigate -->
+  <ion-nav-bar class="bar bar-dark">
+      <ion-nav-buttons side="right">
         <button class="button button-clear icon ion-ios-upload-outline" ng-click="share()"></button>
-      </ion-header-bar>
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="left">
+      <button class="button button-clear icon ion-gear-a icon-left" ng-click="changePage()"></button>
+    </ion-nav-buttons>
+    <ion-nav-back-button class="button-clear">
+      <i class="ion-arrow-left-c"></i> Back
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-nav-view></ion-nav-view>  
+
+   <script id="main.html" type="text/ng-template">  
+   <ion-view class="title" view-title="Dweet My Phone">
       <ion-content overflow-scroll="true" class="padding positive">
-        <div style="margin-bottom:-11px;">
+        <div>
                <div class="list-top">{{device_id}}</div>
             <span class="list-caption-box">thingspace.io
             </span>
@@ -93,5 +104,42 @@
   
   
 </ion-content>
-</ion-pane>
+   </ion-view>
+   </script>
+   <script id="setting.html" type="text/ng-template">
+   
+    <ion-view view-title="setting page">
+      <ion-content overflow-scroll="true" class="padding positive">
+        <div style="">
+               <div class="list-top">{{device_id}}</div>
+        </div>
+        <div class="top-lg-space">
+               <div class="settings-name center top-lg-space">Current thing name</div>
+        </div>
+        <div class="top-sm-space">
+               <input type="text" class="center settings-input" placeholder="macho-daniel">
+        </div>
+        <div class="top-sm-space">
+               <div style="font-style: italic;" class="caption-box">tap text to change</div>
+        </div>
+        <div class="top-lg-space">
+               <div class="settings-name center top-lg-space">dweet frequency</div>
+        </div>
+        <div class="dweet-frequency top-sm-space bot-med-space">
+        <ion-list class="top-sm-space" style="margin-top: 10px;">
+  <ion-radio class="first-child"ng-model="choice" ng-value="'A'">0.5s</ion-radio>
+  <ion-radio ng-model="choice" ng-value="'B'">1s</ion-radio>
+    <ion-radio ng-model="choice" ng-value="C">2s</ion-radio>
+  <ion-radio class="last-child" ng-model="choice" ng-value="'D'">5s</ion-radio>
+</ion-list>
+        </div>
+    </div>
+  </div>
+  
+</div>
+  
+  
+</ion-content>
+    </ion-view>
+  </script>
 </body>

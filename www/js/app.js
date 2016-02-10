@@ -14,6 +14,29 @@ angular.module('starter', ['ionic','ngCordova'])
     }
   });
 })
+.config(function($stateProvider, $urlRouterProvider) {
+  
+  $stateProvider
+    .state('main', {
+      url: '/',
+      templateUrl: 'main.html',
+      controller: 'DeviceController'
+    })
+    .state('setting', {
+      url: '/setting',
+      templateUrl: 'setting.html',
+      controller: 'SettingCtrl'
+    });
+  
+  $urlRouterProvider.otherwise("/");
+  
+})
+.controller('SettingCtrl', function($scope, $stateParams, $ionicHistory) {
+  console.log($stateParams.movieid);
+  $scope.goBack = function(){
+    $ionicHistory.goBack();
+  }    
+})
 .controller('DeviceController', function($ionicPlatform, $scope, $state,$cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
   $ionicPlatform.ready(function() {
     
@@ -155,11 +178,9 @@ angular.module('starter', ['ionic','ngCordova'])
     
   });
   
-  $scope.gotoSetting = function() {
+  $scope.changePage = function() {
       /* $location.path('/tab/newpost'); */   /* this variant doesnt work */
-      
-    alert("Link Setting Page Here!");
-     //$state.go("settings");
+      $state.go('setting');
   };
   $scope.share = function() {
       /* $location.path('/tab/newpost'); */   /* this variant doesnt work */
