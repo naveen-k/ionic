@@ -5,13 +5,12 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>
     </title>
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <!-- compiled scss output -->
 <link href="css/ionic.app.css" rel="stylesheet">
--->
   <!-- ionic/angularjs js -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ngstorage/ngStorage.js"></script>
+    <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
   <script src="lib/ngCordova/dist/ng-cordova.js"></script>
 <script src="lib/ngCordova/dist/ng-cordova.js"></script>
 <script src="cordova.js"></script>
@@ -22,6 +21,7 @@
  
   </head>
   <body ng-app="starter" ng-controller="DeviceController">
+        <div id="custom-overlay"><div class="saving"><span>.</span><span>.</span><span>.</span></div></div> 
     <!-- The nav bar that will be updated as we navigate -->
   <ion-nav-bar class="bar bar-dark">
    <ion-nav-back-button class="button-clear">
@@ -29,7 +29,13 @@
     </ion-nav-back-button>
   </ion-nav-bar>
   <ion-nav-view></ion-nav-view>  
-
+  <script id="list.html" type="text/ng-template">
+    <ion-view view-title="First page">  
+      <ion-content class="padding">
+ 
+      </ion-content>
+    </ion-view>
+  </script>  
    <script id="main.html" type="text/ng-template">  
    <ion-view class="title" view-title="Dweet My Phone">
          <ion-nav-buttons side="right">
@@ -40,7 +46,7 @@
       <button class="button button-clear icon ion-gear-a icon-left" ng-click="changePage()"></button>
     </ion-nav-buttons>
     
-      <ion-content overflow-scroll="true" class="padding positive">
+      <ion-content overflow-scroll="true" class="padding positive main-wrapper">
         <div>
                <div class="list-top">{{device_id}}</div>
             <span class="list-caption-box">thingspace.io
@@ -107,7 +113,7 @@
    </script>
    <script id="setting.html" type="text/ng-template">
     <ion-view view-title="Setting"  hide-left-button="true">
-      <ion-content overflow-scroll="true" class="padding positive">
+      <ion-content overflow-scroll="true" class="padding positive main-wrapper">
         <div style="">
                <div class="list-top">{{device_id}}</div>
         </div>
@@ -125,11 +131,12 @@
         </div>
         <div class="dweet-frequency top-sm-space bot-med-space">
         <ion-list class="top-sm-space" style="margin-top: 10px;">
-  <ion-radio class="first-child"ng-model="choice" ng-value="'A'">0.5s</ion-radio>
-  <ion-radio ng-model="choice" ng-value="'B'">1s</ion-radio>
-    <ion-radio ng-model="choice" ng-value="C">2s</ion-radio>
-  <ion-radio class="last-child" ng-model="choice" ng-value="'D'">5s</ion-radio>
+  <ion-radio class="first-child"name="Hfrequency" ng-change="RadioChange('500')" ng-model="frequency" value="500" >0.5s</ion-radio>
+  <ion-radio name="Hfrequency" ng-change="RadioChange('1000')" ng-model="frequency" value="1000" >1s</ion-radio>
+    <ion-radio name="Hfrequency" ng-change="RadioChange('2000')" ng-model="frequency" value="2000" >2s</ion-radio>
+  <ion-radio class="last-child" name="Hfrequency" ng-change="RadioChange('5000')" ng-model="frequency" value="5000" >5s</ion-radio>
 </ion-list>
+    <div>{{frequency}}</div>
         </div>
     </div>
   </div>
