@@ -1,5 +1,5 @@
 // Ionic Starter App
-angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
+angular.module('starter', ['ionic', 'ngCordova'])
 
 .run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
@@ -38,7 +38,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
             }, 3000);
         });
     })
-    .controller('SettingCtrl', function($scope,$window, $stateParams, $ionicHistory, $localStorage) {
+    .controller('SettingCtrl', function($scope, $window, $stateParams, $ionicHistory) {
         console.log($stateParams.movieid);
         $scope.goBack = function() {
             $ionicHistory.goBack();
@@ -55,9 +55,10 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
          };       
          // set localStorage when function is called after a value is changed 
     })
-    .controller('DeviceController', function($ionicPlatform, $localStorage, $sessionStorage, $window, $scope, $state, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
+    .controller('DeviceController', function($ionicPlatform, $window, $scope, $state, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
         $ionicPlatform.ready(function() {
             // $cordovaSplashscreen.hide();
+            
             $scope.$apply(function() {
                 console.log('DeviceController', 'ionicPlatform ready');
                 // sometimes binding does not work! :/

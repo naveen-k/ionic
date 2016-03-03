@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/conteha/Documents/source/POC/bugs-ui/ionic-new/ionic/platforms/android/CordovaLib/assets"/></dataSet><dataSet config="debug"><source path="/Users/conteha/Documents/source/POC/bugs-ui/ionic-new/ionic/platforms/android/CordovaLib/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/conteha/Documents/source/POC/bugs-ui/ionic-revert/ionic/platforms/android/CordovaLib/assets"/></dataSet><dataSet config="debug"><source path="/Users/conteha/Documents/source/POC/bugs-ui/ionic-revert/ionic/platforms/android/CordovaLib/src/debug/assets"/></dataSet></merger>
