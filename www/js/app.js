@@ -10,14 +10,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
         //if(window.cordova && window.cordova.plugins.Keyboard) {
         //  cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         //}
+
         if (window.StatusBar) {
             StatusBar.styleDefault();
         }
     });
 
     // Define UniqueID if exist (from localstorage)
-    if (window.localStorage.device_id !== null) {
+    if (window.localStorage.device_id !== undefined || null) {
         $rootScope.device_id = window.localStorage.device_id;
+        // window.localStorage.UID = $rootScope.device_id;
     }
 })
 
@@ -28,7 +30,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
         .state('list', {
             url: '/',
             templateUrl: 'main.html',
-            controller: 'ListCtrl as vm'
+            controller: 'ListCtrl'
         })
         .state('setting', {
             url: '/setting',
@@ -53,40 +55,58 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
     var vm = this;
     // vm.randomGenerate = randomGenerate;
     vm.IDchange = IDchange;
+    vm.madeChange = madeChange;
     vm.device_id = window.localStorage.device_id;
 
     // Trackes the change if user edits'
     function IDchange() {
-        console.log("vm.device_id Change", vm.device_id);
         window.localStorage.device_id = vm.device_id;
-        $rootScope.device_id = window.localStorage.device_id;
-        // }
+        $rootScope.device_id = vm.device_id;
+        vm.madeChange();
     }
 
+    function madeChange() {
+        if (vm.device_id === undefined) {
+            $rootScope.device_id = window.localStorage.UID;
+            window.localStorage.device_id = window.localStorage.UID;
+        } else {
+        };
+    }
+
+
     $scope.goBack = function() {
+
         $ionicHistory.goBack();
 
     };
 
 
-    $scope.frequency = $window.localStorage['frequency'];
+    $scope.frequency = $window.localStorage.frequency;
     if (!$scope.frequency) {
-        $window.localStorage['frequency'] = 5000;
-        $scope.frequency = $window.localStorage['frequency'];
+        $window.localStorage.frequency = 5000;
+        $scope.frequency = $window.localStorage.frequency;
     }
 
     $scope.RadioChange = function(h) {
         $scope.frequency = h;
-        $window.localStorage['frequency'] = h;
+        $window.localStorage.frequency = h;
+        // $rootScope.frequency = $window.localStorage.frequency
+        // console.log("$window.localStorage.frequency",$window.localStorage.frequency);
     };
     // set localStorage when function is called after a value is changed 
 })
 
 
 // 
-.controller('DeviceController', function($ionicPlatform, $localStorage, $sessionStorage, $window, $scope, $state, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
+.controller('DeviceController', function($ionicHistory, $rootScope, $ionicPlatform, $localStorage, $sessionStorage, $window, $scope, $state, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
     var vm = this;
     vm.randomGenerate = randomGenerate;
+    $scope.clickBack = clickBack;
+
+    function clickBack() {
+        window.localStorage.UID = window.localStorage.device_id;
+        $ionicHistory.goBack();
+    }
 
     /////////
     $ionicPlatform.ready(function() {
@@ -98,11 +118,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
 
             // $scope.device_id = 'dweet_' + $cordovaDevice.getPlatform() + '_' + $cordovaDevice.getVersion();
             if (window.localStorage.device_id !== undefined) {
-                vm.device_id = window.localStorage.device_id;
-
+                $rootScope.device_id = window.localStorage.device_id;
+                window.localStorage.UID = $rootScope.device_id;
             } else {
-                vm.device_id = randomGenerate(11);
-                window.localStorage.device_id = vm.device_id;
+                $rootScope.device_id = randomGenerate(11);
+                window.localStorage.device_id = $rootScope.device_id;
+                window.localStorage.UID = $rootScope.device_id;
             }
 
 
@@ -136,11 +157,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
                         }
                         $scope.test = '#' + result;
                     }, function(err) {
-                        $scope.isHeadphone = 'na';
+                        $scope.isHeadphone = 'NA';
                         //$scope.test='*'+err;
                     });
                 } catch (err) {
-                    $scope.isHeadphone = 'na';
+                    $scope.isHeadphone = 'NA';
                     //$scope.test='**'+err;
                 }
             }
@@ -215,10 +236,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
         });
         // Dweet  
         //var device_id=  'dweet_'+$cordovaDevice.getPlatform()+'_'+getUUID();
-        var interval = $window.localStorage['frequency'];
+        var interval = $window.localStorage.frequency;
         if (!interval) {
-            interval = 1000;
+            interval = $window.localStorage.frequency;
         }
+        // console.log("interval", interval);
+
         var myVar = setInterval(dweetIt, interval);
 
         function dweetIt() {
@@ -235,7 +258,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
                 brightness: $scope.brightness,
                 isHeadphone: $scope.isHeadphone
             };
-
             // Apply Devise ID
             dweetio.dweet_for($scope.device_id, data, function(err, dweet) {
                 //$scope.test=dweet.content;
@@ -275,7 +297,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
     $scope.changePage = function() {
         /* $location.path('/tab/newpost'); */
         /* this variant doesnt work */
+
         $state.go('setting');
+
     };
     $scope.share = function() {
         /* $location.path('/tab/newpost'); */

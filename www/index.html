@@ -28,8 +28,8 @@
     </div>
     <!-- The nav bar that will be updated as we navigate -->
     <ion-nav-bar class="bar bar-dark">
-        <ion-nav-back-button class="button-clear">
-            <i class="ion-arrow-left-c"></i> Back
+        <ion-nav-back-button class="button-clear" ng-click="clickBack()" >
+            <i class="ion-arrow-left-c" ></i> Back
         </ion-nav-back-button>
     </ion-nav-bar>
     <ion-nav-view></ion-nav-view>
@@ -120,7 +120,9 @@
                     <div class="settings-name center top-lg-space">Current thing name</div>
                 </div>
                 <div class="top-sm-space">
-                    <input type="text" required class="center settings-input" placeholder="macho-daniel" ng-model="vm.device_id" ng-change="vm.IDchange()" >
+
+                        <input type="text" class="center settings-input" placeholder="macho-daniel" ng-model="vm.device_id" ng-change="vm.IDchange()" required >
+
                 </div>
                 <div class="top-sm-space">
                     <div style="font-style: italic;" class="caption-box">tap text to change</div>
