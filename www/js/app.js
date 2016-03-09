@@ -1,7 +1,6 @@
 // Ionic: starter
 angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
 
-
 // Run Block
 .run(function($ionicPlatform, $rootScope) {
     $ionicPlatform.ready(function() {
@@ -69,17 +68,14 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
         if (vm.device_id === undefined) {
             $rootScope.device_id = window.localStorage.UID;
             window.localStorage.device_id = window.localStorage.UID;
-        } else {
-        };
+        } else {};
     }
-
 
     $scope.goBack = function() {
 
         $ionicHistory.goBack();
 
     };
-
 
     $scope.frequency = $window.localStorage.frequency;
     if (!$scope.frequency) {
@@ -96,15 +92,16 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
     // set localStorage when function is called after a value is changed 
 })
 
-
 // 
-.controller('DeviceController', function($ionicHistory, $rootScope, $ionicPlatform, $localStorage, $sessionStorage, $window, $scope, $state, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
+.controller('DeviceController', function($http, $ionicHistory, $rootScope, $ionicPlatform, $localStorage, $sessionStorage, $window, $scope, $state, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
     var vm = this;
     vm.randomGenerate = randomGenerate;
+    vm.random_ID_Generator = random_ID_Generator;
     $scope.clickBack = clickBack;
 
     function clickBack() {
         window.localStorage.UID = window.localStorage.device_id;
+        // vm.random_ID_Generator()
         $ionicHistory.goBack();
     }
 
@@ -121,11 +118,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
                 $rootScope.device_id = window.localStorage.device_id;
                 window.localStorage.UID = $rootScope.device_id;
             } else {
-                $rootScope.device_id = randomGenerate(11);
-                window.localStorage.device_id = $rootScope.device_id;
-                window.localStorage.UID = $rootScope.device_id;
+                // $rootScope.device_id = randomGenerate(11);
+                vm.random_ID_Generator();
+                // window.localStorage.device_id = $rootScope.device_id;
+                // window.localStorage.UID = $rootScope.device_id;
             }
-
 
             /////////
             var osVersion = $cordovaDevice.getVersion();
@@ -197,7 +194,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
                     $scope.longitude = position.coords.longitude.toFixed(7);
                     $scope.altitude = position.coords.altitudeAccuracy + 'm';
                 });
-
 
             // Read   Acceleration  
             $cordovaDeviceMotion.getCurrentAcceleration().then(function(result) {
@@ -271,6 +267,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
 
     });
 
+    // Old To Generate Random ID
     function randomGenerate(x) {
         var me = this;
         // me.chars = RandString(/([A-Za-z])/ig);
@@ -293,6 +290,56 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
         return me.randomstring;
     }
 
+    // New to Generate Random ID with Array
+    function random_ID_Generator() {
+        var me = this;
+        me.randomNoGen = randomNoGen;
+        me.data = null;
+        me.ID1 = null;
+        me.ID2 = null;
+        me.ID = null;
+
+        // Get data from Data.json file.
+        $http({
+            method: 'GET',
+            url: './js/data.json'
+        })
+
+        // Fetch Data
+        .then(function successCallback(response) {
+            // console.log("response", response.data);
+            me.data = response.data;
+            // this callback will be called asynchronously
+            // when the response is available
+        }, function errorCallback(error) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            console.log("error", error);
+        })
+
+        // Generate Random ID
+        .then(function() {
+            // console.log("Data", me.data);
+            var A = me.data.adjectives;
+            var N = me.data.nouns;
+            var V = me.data.verbs;
+            me.ID1 = vm.randomNoGen(0, A.length);
+            me.ID2 = vm.randomNoGen(0, N.length);
+            me.ID = A[me.ID1] + '_' + N[me.ID2];
+            // console.log("me.ID",me.ID);
+            // me.GeneratedID = me.ID;
+            $rootScope.device_id = me.ID;
+            window.localStorage.device_id = $rootScope.device_id;
+            window.localStorage.UID = $rootScope.device_id;
+        });
+
+        function randomNoGen(min, max) {
+            // Returns a random integer between min (included) and max (included)
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        // console.log("me.GeneratedID",me.GeneratedID);
+        // return me.ID;
+    }
 
     $scope.changePage = function() {
         /* $location.path('/tab/newpost'); */
