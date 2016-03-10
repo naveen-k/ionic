@@ -68,13 +68,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
         if (vm.device_id === undefined) {
             $rootScope.device_id = window.localStorage.UID;
             window.localStorage.device_id = window.localStorage.UID;
-        } else {};
+        }
     }
 
     $scope.goBack = function() {
-
         $ionicHistory.goBack();
-
     };
 
     $scope.frequency = $window.localStorage.frequency;
@@ -95,13 +93,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
 // 
 .controller('DeviceController', function($http, $ionicHistory, $rootScope, $ionicPlatform, $localStorage, $sessionStorage, $window, $scope, $state, $cordovaDevice, $cordovaDeviceOrientation, $cordovaGeolocation, $cordovaDeviceMotion, $cordovaBrightness, $cordovaHeadsetDetection) {
     var vm = this;
-    vm.randomGenerate = randomGenerate;
+    // vm.randomGenerate = randomGenerate;
     vm.random_ID_Generator = random_ID_Generator;
     $scope.clickBack = clickBack;
 
     function clickBack() {
         window.localStorage.UID = window.localStorage.device_id;
-        // vm.random_ID_Generator()
         $ionicHistory.goBack();
     }
 
@@ -262,35 +259,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
 
         function deltaRotationVector(xAxis, yAxis, zAxis) {
             //$scope.test='hiii'+dweetio;
-
         }
 
     });
 
-    // Old To Generate Random ID
-    function randomGenerate(x) {
-        var me = this;
-        // me.chars = RandString(/([A-Za-z])/ig);
-        me.chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-        me.string_length = x / 2;
-        me.randomstring = '';
-        me.randomstring1 = '';
-        me.randomstring2 = '';
-
-        for (var i = 0; i < me.string_length; i++) {
-            me.rnum = Math.floor(Math.random() * me.chars.length);
-            me.randomstring1 += me.chars.substring(rnum, rnum + 1);
-        }
-
-        for (var i = 0; i < me.string_length; i++) {
-            me.rnum = Math.floor(Math.random() * me.chars.length);
-            me.randomstring2 += me.chars.substring(rnum, rnum + 1);
-        }
-        me.randomstring = me.randomstring1 + "_" + me.randomstring2;
-        return me.randomstring;
-    }
-
-    // New to Generate Random ID with Array
+    // Generates Random ID with data.json
     function random_ID_Generator() {
         var me = this;
         me.randomNoGen = randomNoGen;
@@ -326,8 +299,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
             me.ID1 = vm.randomNoGen(0, A.length);
             me.ID2 = vm.randomNoGen(0, N.length);
             me.ID = A[me.ID1] + '_' + N[me.ID2];
-            // console.log("me.ID",me.ID);
-            // me.GeneratedID = me.ID;
             $rootScope.device_id = me.ID;
             window.localStorage.device_id = $rootScope.device_id;
             window.localStorage.UID = $rootScope.device_id;
@@ -337,8 +308,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
             // Returns a random integer between min (included) and max (included)
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
-        // console.log("me.GeneratedID",me.GeneratedID);
-        // return me.ID;
     }
 
     $scope.changePage = function() {
