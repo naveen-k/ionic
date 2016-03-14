@@ -24,12 +24,16 @@
 
 <body ng-app="starter" ng-controller="DeviceController">
     <div id="custom-overlay">
-        <div class="saving"><span>.</span><span>.</span><span>.</span></div>
+        <div class="saving">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+        </div>
     </div>
     <!-- The nav bar that will be updated as we navigate -->
     <ion-nav-bar class="bar bar-dark">
-        <ion-nav-back-button class="button-clear" ng-click="clickBack()" >
-            <i class="ion-arrow-left-c" ></i> Back
+        <ion-nav-back-button class="button-clear" ng-click="clickBack()">
+            <i class="ion-arrow-left-c"></i> Back
         </ion-nav-back-button>
     </ion-nav-bar>
     <ion-nav-view></ion-nav-view>
@@ -52,23 +56,27 @@
                 <div>
                     <div class="list-top">{{device_id}}</div>
                     <span class="list-caption-box">thingspace.io
-            </span>
-                    <span class="online  button-balanced  col-offset-75"><a href="#"><img src="images/online.jpg"  /></a></span >
-        </div>
-        <div class="list card device-border">
-           <div class="list-head">device </div>
-          <div class="item">
-                    <span class="item-left"> IOS Version</span>
-                    <span class="item-right"> {{osVersion}}</span>
+                    </span>
+                    <span class="online  button-balanced  col-offset-75">
+                        <a href="#">
+                            <img src="images/online.jpg" />
+                        </a>
+                    </span>
                 </div>
-                <div class="item">
-                    <span class="item-left"> Brightness</span>
-                    <span class="item-right">{{brightness}}</span>
-                </div>
-                <div class="item">
-                    <span class="item-left"> Headphones Attached</span>
-                    <span class="item-right">{{isHeadphone}}</span>
-                </div>
+                <div class="list card device-border">
+                    <div class="list-head">device </div>
+                    <div class="item">
+                        <span class="item-left"> IOS Version</span>
+                        <span class="item-right"> {{osVersion}}</span>
+                    </div>
+                    <div class="item">
+                        <span class="item-left"> Brightness</span>
+                        <span class="item-right">{{brightness}}</span>
+                    </div>
+                    <div class="item">
+                        <span class="item-left"> Headphones Attached</span>
+                        <span class="item-right">{{isHeadphone}}</span>
+                    </div>
                 </div>
                 <div class="list card orientation-border">
                     <div class="list-head">Orientation </div>
@@ -121,7 +129,7 @@
                 </div>
                 <div class="top-sm-space">
 
-                        <input type="text" class="center settings-input" placeholder="macho-daniel" ng-model="vm.device_id" ng-change="vm.IDchange()" required >
+                    <input type="text" class="center settings-input" placeholder="macho-daniel" ng-model="vm.device_id" ng-change="vm.IDchange()" required>
 
                 </div>
                 <div class="top-sm-space">

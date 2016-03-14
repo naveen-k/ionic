@@ -2,14 +2,14 @@
 angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
 
 // Run Block
-.run(function($ionicPlatform, $rootScope) {
+.run(function($ionicPlatform, $rootScope, $localStorage) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         //if(window.cordova && window.cordova.plugins.Keyboard) {
         //  cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         //}
-
+        // localStorage.clear();
         if (window.StatusBar) {
             StatusBar.styleDefault();
         }
@@ -20,6 +20,14 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
         $rootScope.device_id = window.localStorage.device_id;
         // window.localStorage.UID = $rootScope.device_id;
     }
+    if (window.localStorage.frequency === undefined || null) {
+        window.localStorage.frequency = 5000;
+        $rootScope.frequency = 5000;
+    } else {
+        $rootScope.frequency = window.localStorage.frequency;
+        // console.log("$localstorage.frequency ***",  $rootScope.frequency);
+    }
+
 })
 
 // Config Block -- Routing
@@ -75,15 +83,15 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
         $ionicHistory.goBack();
     };
 
-    $scope.frequency = $window.localStorage.frequency;
-    if (!$scope.frequency) {
-        $window.localStorage.frequency = 5000;
-        $scope.frequency = $window.localStorage.frequency;
-    }
+    // $scope.frequency = $window.localStorage.frequency;
+    // if (!$scope.frequency) {
+    //     $window.localStorage.frequency = 5000;
+    //     $scope.frequency = $window.localStorage.frequency;
+    // }
 
-    $scope.RadioChange = function(h) {
-        $scope.frequency = h;
-        $window.localStorage.frequency = h;
+    $scope.RadioChange = function(dweetFreq) {
+        $scope.frequency = dweetFreq;
+        window.localStorage.frequency = dweetFreq;
         // $rootScope.frequency = $window.localStorage.frequency
         // console.log("$window.localStorage.frequency",$window.localStorage.frequency);
     };
@@ -96,6 +104,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
     // vm.randomGenerate = randomGenerate;
     vm.random_ID_Generator = random_ID_Generator;
     $scope.clickBack = clickBack;
+    var interval = window.localStorage.frequency;
 
     function clickBack() {
         window.localStorage.UID = window.localStorage.device_id;
@@ -106,9 +115,11 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
     $ionicPlatform.ready(function() {
         // $cordovaSplashscreen.hide();
         $scope.$apply(function() {
+
+            // Watch interval (dweet frequency) change.
+
+            /////
             console.log('DeviceController', 'ionicPlatform ready');
-            // sometimes binding does not work! :/
-            // getting device infor from $cordovaDevice
 
             // $scope.device_id = 'dweet_' + $cordovaDevice.getPlatform() + '_' + $cordovaDevice.getVersion();
             if (window.localStorage.device_id !== undefined) {
@@ -122,9 +133,13 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
             }
 
             /////////
-            var osVersion = $cordovaDevice.getVersion();
-            $scope.osVersion = osVersion;
-            console.log('DeviceController', 'osVersion', osVersion);
+            $scope.osVersion = $cordovaDevice.getVersion();
+            // var osVersion = $cordovaDevice.getVersion();
+            // $scope.osVersion = osVersion;
+            // if($scope.osVersion == undefined){
+
+            console.log('No osVersion');
+            // }
 
             // Read   Brightness  
             var myVar = setInterval(myTimer, 500);
@@ -227,39 +242,79 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngStorage'])
                 });
 
         });
+
         // Dweet  
         //var device_id=  'dweet_'+$cordovaDevice.getPlatform()+'_'+getUUID();
-        var interval = $window.localStorage.frequency;
-        if (!interval) {
-            interval = $window.localStorage.frequency;
-        }
+        // var interval = window.localStorage.frequency;
+        // if (!interval) {
+        //     interval = $window.localStorage.frequency;
+        // }
         // console.log("interval", interval);
 
-        var myVar = setInterval(dweetIt, interval);
+        // var myVar = setInterval(dweetIt, interval);
 
-        function dweetIt() {
-            //$scope.test='hiii'+dweetio;
-            var data = {
-                osVersion: $scope.osVersion,
-                latitude: $scope.latitude,
-                longitude: $scope.longitude,
-                altitude: $scope.altitude,
-                xAxis: $scope.xAxis,
-                yAxis: $scope.yAxis,
-                zAxis: $scope.zAxis,
-                rotationRateX: $scope.rotationRateX,
-                brightness: $scope.brightness,
-                isHeadphone: $scope.isHeadphone
-            };
-            // Apply Devise ID
-            dweetio.dweet_for($scope.device_id, data, function(err, dweet) {
-                //$scope.test=dweet.content;
-            });
-        }
+        // function dweetIt() {
+        //     //$scope.test='hiii'+dweetio;
+        //     var data = {
+        //         osVersion: $scope.osVersion,
+        //         latitude: $scope.latitude,
+        //         longitude: $scope.longitude,
+        //         altitude: $scope.altitude,
+        //         xAxis: $scope.xAxis,
+        //         yAxis: $scope.yAxis,
+        //         zAxis: $scope.zAxis,
+        //         rotationRateX: $scope.rotationRateX,
+        //         brightness: $scope.brightness,
+        //         isHeadphone: $scope.isHeadphone
+        //     };
+
+        //     // Apply Devise ID
+        //     dweetio.dweet_for($scope.device_id, data, function(err, dweet) {
+        //         //$scope.test=dweet.content;
+        //     });
+        // }
 
         function deltaRotationVector(xAxis, yAxis, zAxis) {
             //$scope.test='hiii'+dweetio;
         }
+
+        $scope.$watch(function() {
+            var me = window.localStorage.frequency;
+            // me.freq = ;
+
+            return me;
+        }, function(me) {
+            interval = me;
+            $scope.frequency = window.localStorage.frequency;
+            console.log("######interval######", interval);
+            // $scope.frequency = window.localStorage.frequency;
+            if ($rootScope.timer_id) {
+                clearInterval($rootScope.timer_id);
+            }
+            $rootScope.timer_id = setInterval(dweetNow, me);
+
+            function dweetNow() {
+                // console.log("AAAAAAA")
+                //$scope.test='hiii'+dweetio;
+                var data = {
+                    osVersion: $scope.osVersion,
+                    latitude: $scope.latitude,
+                    longitude: $scope.longitude,
+                    altitude: $scope.altitude,
+                    xAxis: $scope.xAxis,
+                    yAxis: $scope.yAxis,
+                    zAxis: $scope.zAxis,
+                    rotationRateX: $scope.rotationRateX,
+                    brightness: $scope.brightness,
+                    isHeadphone: $scope.isHeadphone
+                };
+                console.log("data Watch", data)
+                    // Apply Devise ID
+                dweetio.dweet_for($scope.device_id, data, function(err, dweet) {
+                    //$scope.test=dweet.content;
+                });
+            }
+        });
 
     });
 
