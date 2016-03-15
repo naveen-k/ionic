@@ -73,9 +73,9 @@ Imaging with any questions regarding Web Fonts:  http://www.fonts.com
 //-------------------------------------------------- */
 /*
   Neue Haas Grotesk™ W01 Text 55 Roman
-	Neue Haas Grotesk™ W01 Text 56 Italic
-	Neue Haas Grotesk™ W01 Text 65 Medium
-	Neue Haas Grotesk™ W01 Text 66 Medium Italic
+  Neue Haas Grotesk™ W01 Text 56 Italic
+  Neue Haas Grotesk™ W01 Text 65 Medium
+  Neue Haas Grotesk™ W01 Text 66 Medium Italic
 */
 /*normal_400*/
 @font-face {
@@ -117,11 +117,11 @@ Imaging with any questions regarding Web Fonts:  http://www.fonts.com
 //-------------------------------------------------- */
 /*
   Neue Haas Grotesk™ W01 Display 55 Roman
-	Neue Haas Grotesk™ W01 Display 56 Italic
-	Neue Haas Grotesk™ W01 Display 65 Medium
-	Neue Haas Grotesk™ W01 Display 66 Medium Italic
-	Neue Haas Grotesk™ W01 Display 75 Bold
-	Neue Haas Grotesk™ W01 Display 76 Bold Italic
+  Neue Haas Grotesk™ W01 Display 56 Italic
+  Neue Haas Grotesk™ W01 Display 65 Medium
+  Neue Haas Grotesk™ W01 Display 66 Medium Italic
+  Neue Haas Grotesk™ W01 Display 75 Bold
+  Neue Haas Grotesk™ W01 Display 76 Bold Italic
 */
 /*Disp_normal_500*/
 @font-face {
@@ -499,4 +499,8 @@ a {
 }
 .thingspace{
     width: 98%; text-align: left;
+}
+.platform-android .bar .title{
+    text-align: left !important;
+    margin-left: 23% !important;
 }
